@@ -1,4 +1,4 @@
-#!/usr/bin/env perl -w
+#!/usr/bin/env perl
 #
 # version-commit
 # John Simpson <jms1@jms1.net> 2022-04-01
@@ -39,6 +39,7 @@
 
 require 5.005 ;
 use strict ;
+use warnings;
 
 use JSON ;
 
