@@ -4,8 +4,41 @@
     <title>tm - tmux Manager / Helper</title>
     <link>https://github.com/kg4zow/mdbook-template</link>
     <description>Documentation for tm</description>
-    <pubDate>Sun, 6 Aug 2023 15:28:24 +0800</pubDate>
-    <lastBuildDate>So, 06 Aug 2023 07:31:37 +0000</lastBuildDate>
+    <pubDate>Sun, 6 Aug 2023 15:33:26 +0800</pubDate>
+    <lastBuildDate>So, 06 Aug 2023 07:33:41 +0000</lastBuildDate>
+    <item>
+      <guid>63ffcb6919b9c7ba0f53867781c69b55f07f906e</guid>
+      <pubDate>Sun, 6 Aug 2023 15:33:26 +0800</pubDate>
+      <link>https://github.com/kg4zow/mdbook-template/commit/63ffcb6919b9c7ba0f53867781c69b55f07f906e</link>
+      <title>Remove chapter_1 file, unused</title>
+      <author>Joerg Jaspert</author>
+      <description>
+        <pre>Commit: 63ffcb6919b9c7ba0f53867781c69b55f07f906e
+Author: Joerg Jaspert &amp;lt;joerg&amp;gt;
+Date: Sun, 6 Aug 2023 15:33:26 +0800
+
+Remove chapter_1 file, unused
+
+M	src/SUMMARY.md
+D	src/chapter_1.md</pre>
+      </description>
+    </item>
+    <item>
+      <guid>d31967e628b207690a743cec0d2710a95249f7d2</guid>
+      <pubDate>Sun, 6 Aug 2023 15:31:46 +0800</pubDate>
+      <link>https://github.com/kg4zow/mdbook-template/commit/d31967e628b207690a743cec0d2710a95249f7d2</link>
+      <title>Enforce bash as shell</title>
+      <author>Joerg Jaspert</author>
+      <description>
+        <pre>Commit: d31967e628b207690a743cec0d2710a95249f7d2
+Author: Joerg Jaspert &amp;lt;joerg&amp;gt;
+Date: Sun, 6 Aug 2023 15:31:46 +0800
+
+Enforce bash as shell
+
+M	Makefile</pre>
+      </description>
+    </item>
     <item>
       <guid>a8a6979696336218aedc6efa1c136e70fd96fa74</guid>
       <pubDate>Sun, 6 Aug 2023 15:28:24 +0800</pubDate>
