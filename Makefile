@@ -15,7 +15,7 @@ serve:
 #   push: rsync
 #   push: gh-pages
 
-push:
+push: gh-pages
 
 ########################################
 # IF you're going to publish the generated book to a web server, and you're
