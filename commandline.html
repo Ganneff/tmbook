@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - tm - a tmux manager / helper</title>
+        <title>Commandline - tm - a tmux manager / helper</title>
 
 
         <!-- Custom HTML head -->
@@ -91,7 +91,7 @@
 -->
 <!-- End extra link above the ToC -->
 
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html" class="active">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="commandline.html">Commandline</a></li><li class="chapter-item expanded "><div>Session files</div></li><li><ol class="section"><li class="chapter-item expanded "><div>Simple</div></li><li class="chapter-item expanded "><div>Extended</div></li></ol></li><li class="chapter-item expanded "><a href="chapter_1.html">Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="commandline.html" class="active">Commandline</a></li><li class="chapter-item expanded "><div>Session files</div></li><li><ol class="section"><li class="chapter-item expanded "><div>Simple</div></li><li class="chapter-item expanded "><div>Extended</div></li></ol></li><li class="chapter-item expanded "><a href="chapter_1.html">Chapter 1</a></li></ol>
 
 <!-- Start version-commit content below ToC -->
                 <hr/>
@@ -169,37 +169,86 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p>tm is a small helper/wrapper for tmux. It aims at making the creation
-and resume of sessions easier wile trying to stay out of the users
-way.</p>
-<h1 id="history"><a class="header" href="#history">History</a></h1>
-<p>tm started as a bash shell script to ease my day-to-day work with
-<a href="https://github.com/tmux/tmux">tmux</a>. While tmux itself is easy to
-work with (creating new sessions is simple) for simple tasks, it takes
-considerably more brain power to setup a session that opens
-connections to multiple hosts and sets tmux up in the way, that input
-is send to all of them at the same time.</p>
-<p>And this being a task I need a <em>lot</em> of times every day, I do not want
-to do this manually, so tm was born. Back in 2010/2011 when I started
-working on it, there wasn't any (to me) useful tool I could have
-taken instead.</p>
-<h2 id="rust"><a class="header" href="#rust">Rust</a></h2>
-<p>At some point in time I switched over from Shell to Rust, which
-brought a <strong>huge</strong> speed boost for tm. While the shell version always
-worked good enough and for most sessions one builds also fast enough,
-having a compiled binary <em>still</em> makes a difference. It is especially
-noticable on the sessions that open dozens (or even hundreds) of
-windows/panes.</p>
-<h1 id="commandline"><a class="header" href="#commandline">Commandline</a></h1>
-<p>tm offers simple ways to start new sessions using commandline, where
-it supports two styles of options - so-called <code>traditional</code> and
-<code>getopt</code> style. They are mostly identica, though some options only
-work in one and not the other way.</p>
-<h1 id="config-files"><a class="header" href="#config-files">Config files</a></h1>
-<p>tm also offers different types of config files (called session files).
-From simple list of hostnames to files that ca include others to files
-that basically contain tmux commands to execute.</p>
+                        <h1 id="commandline"><a class="header" href="#commandline">Commandline</a></h1>
+<p>As tm started out as a small shell script, not much thought was given
+to the way of calling it, it just accumulated options. That is what is
+now labeled <code>traditional</code> style. Some of those, like the <code>s</code> and <code>ms</code>
+sub-commands are still the most used arguments to tm - typing their
+<code>getopt</code> equivalents of <code>-s</code> and <code>-m</code> is just more/less nice to type.</p>
+<h2 id="common-beheaviour"><a class="header" href="#common-beheaviour">Common beheaviour</a></h2>
+<p>No matter if one uses traditional or getopt style, common options like
+<code>-v</code>/<code>-q</code>/<code>-h</code> as well as their long versions
+<code>--verbose</code>/<code>--quiet</code>/<code>--help</code> behave the same.</p>
+<h1 id="log-output"><a class="header" href="#log-output">Log output</a></h1>
+<p>tm includes extensive logging. To see it, use the <code>-v</code>/<code>--verbose</code>
+switch. Use it more often for more detailed output - with <em>TRACE</em>
+level being the most detailed one, including tracing of function
+calls and timing information for them.</p>
+<p>Default is to only output error messages.</p>
+<div class="table-wrapper"><table><thead><tr><th>Count of <code>-v</code></th><th>Output detail</th></tr></thead><tbody>
+<tr><td></td><td>Errors only</td></tr>
+<tr><td>-v</td><td>Above plus Warnings</td></tr>
+<tr><td>-vv</td><td>Above plus Informational</td></tr>
+<tr><td>-vvv</td><td>Above plus Debug</td></tr>
+<tr><td>-vvvv</td><td>Above plus Trace</td></tr>
+</tbody></table>
+</div>
+<p>Usually a <code>-vvv</code> is really helpful to debug new session files.</p>
+<h2 id="traditional"><a class="header" href="#traditional">Traditional</a></h2>
+<p>The traditional calling style, some of it dating back to the first
+shell script version, is easiest for some options.</p>
+<h3 id="overview"><a class="header" href="#overview">Overview</a></h3>
+<p>As of tm version 0.9 the following commands are supported using the
+<code>traditional</code> style of calling tm:</p>
+<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Intended action</th></tr></thead><tbody>
+<tr><td>ls</td><td>List running sessions</td></tr>
+<tr><td>s</td><td>Open SSH session to the destination</td></tr>
+<tr><td>ms</td><td>Open multi SSH sessions to hosts, synchronizing input</td></tr>
+<tr><td>k</td><td>Kill a session</td></tr>
+<tr><td>b</td><td>Break a multi-session pane into single windows</td></tr>
+<tr><td>j</td><td>Join multiple windows into one single one with many panes</td></tr>
+<tr><td>help</td><td>Print this message or the help of the given subcommand(s)</td></tr>
+</tbody></table>
+</div>
+<h4 id="ls"><a class="header" href="#ls">ls</a></h4>
+<p>Same as <code>tmux ls</code>, simply list the existing tmux sessions.</p>
+<h4 id="s-hosts"><a class="header" href="#s-hosts">s [HOSTS]</a></h4>
+<p>This will open a new tmux session and create multiple windows, one per
+argument - the windows will be using ssh to connect to the given
+host(s). It's arguments can be anything that your SSH config will
+accept, this can range from simple hostnames to user@host or whatever
+possible matches you may have configured in your <em>~/.ssh/config</em> file.</p>
+<p>Multiple arguments will open multiple tmux windows in the same
+session.</p>
+<h4 id="ms-hosts"><a class="header" href="#ms-hosts">ms [HOSTS]</a></h4>
+<p>This will open a new tmux session and create multiple panes in the
+first window, one per argument. The panes will be using ssh to connect
+to the given hosts. It's arguments can be anything that your SSH
+config will accept, this can range from simple hostnames to user@host
+or whatever possible matches you may have configured in your
+<em>~/.ssh/config</em> file.</p>
+<p>When all panes are opened the tmux switch <strong>synchronize-pane</strong> will be
+toggled on, so that anything input will be sent to all hosts at the
+same time.</p>
+<p>This subcommand will check if tmux has been able to open the pane, and
+if not it will tell tmux to rearrange the layout, to &quot;gain&quot; some space
+again. At the end it will select the <strong>tiled</strong> layout, so that all
+panes will roughly have the same size.</p>
+<h4 id="k-session"><a class="header" href="#k-session">k [SESSION]</a></h4>
+<p>This basically translates to <code>tmux kill-session</code> and will kill the
+session with the given name.</p>
+<h4 id="b-session"><a class="header" href="#b-session">b [SESSION]</a></h4>
+<p>This is used to <strong>break</strong> a session built using
+<a href="commandline.html#ms">ms</a> or a session file (or even manually) into
+seperate windows. It will take the given session name and split all
+panes in the window included into seperate tmux windows.</p>
+<h4 id="j-session"><a class="header" href="#j-session">j [SESSION]</a></h4>
+<p>This is used to <strong>join</strong> a multi-window session to one that closely
+resembles one build using the <a href="commandline.html#ms">ms</a> command. It will
+take the given session name and join all windows to the first window,
+as such making them panes of the first window. Afterwards it will
+toggle the <strong>synchronize-pane</strong> option of that window on, so any input
+will be send to all panes.</p>
 
 
 <!-- Start version-commit content below every page -->
@@ -218,8 +267,11 @@ that basically contain tmux commands to execute.</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next" href="commandline.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="chapter_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -229,8 +281,11 @@ that basically contain tmux commands to execute.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next" href="commandline.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="chapter_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

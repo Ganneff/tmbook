@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>tm - tmux Manager / Helper</title>
+    <link>https://github.com/kg4zow/mdbook-template</link>
+    <description>Documentation for tm</description>
+    <pubDate>Sun, 6 Aug 2023 15:28:24 +0800</pubDate>
+    <lastBuildDate>So, 06 Aug 2023 07:31:37 +0000</lastBuildDate>
+    <item>
+      <guid>a8a6979696336218aedc6efa1c136e70fd96fa74</guid>
+      <pubDate>Sun, 6 Aug 2023 15:28:24 +0800</pubDate>
+      <link>https://github.com/kg4zow/mdbook-template/commit/a8a6979696336218aedc6efa1c136e70fd96fa74</link>
+      <title>Do not use -w, breaks on linux</title>
+      <author>Joerg Jaspert</author>
+      <description>
+        <pre>Commit: a8a6979696336218aedc6efa1c136e70fd96fa74
+Author: Joerg Jaspert &amp;lt;joerg&amp;gt;
+Date: Sun, 6 Aug 2023 15:28:24 +0800
+
+Do not use -w, breaks on linux
+
+M	git2rss
+M	version-commit</pre>
+      </description>
+    </item>
+    <item>
+      <guid>3157fcda83c33a74cc83949c8b2b20ae3d4a0c47</guid>
+      <pubDate>Sun, 6 Aug 2023 15:24:01 +0800</pubDate>
+      <link>https://github.com/kg4zow/mdbook-template/commit/3157fcda83c33a74cc83949c8b2b20ae3d4a0c47</link>
+      <title>Start "tm" "book"/documentation</title>
+      <author>Joerg Jaspert</author>
+      <description>
+        <pre>Commit: 3157fcda83c33a74cc83949c8b2b20ae3d4a0c47
+Author: Joerg Jaspert &amp;lt;joerg&amp;gt;
+Date: Sun, 6 Aug 2023 15:24:01 +0800
+
+Start "tm" "book"/documentation
+
+M	src/SUMMARY.md
+A	src/commandline.md
+M	src/introduction.md</pre>
+      </description>
+    </item>
+    <item>
+      <guid>d0d3f3ef55fc9f19493c9b8199a104b29ebfc171</guid>
+      <pubDate>Sun, 6 Aug 2023 15:23:47 +0800</pubDate>
+      <link>https://github.com/kg4zow/mdbook-template/commit/d0d3f3ef55fc9f19493c9b8199a104b29ebfc171</link>
+      <title>We push github</title>
+      <author>Joerg Jaspert</author>
+      <description>
+        <pre>Commit: d0d3f3ef55fc9f19493c9b8199a104b29ebfc171
+Author: Joerg Jaspert &amp;lt;joerg&amp;gt;
+Date: Sun, 6 Aug 2023 15:23:47 +0800
+
+We push github
+
+M	Makefile</pre>
+      </description>
+    </item>
+    <item>
+      <guid>da445f50f11558293ff050b8d79a4d897da41edb</guid>
+      <pubDate>Sun, 6 Aug 2023 14:03:28 +0800</pubDate>
+      <link>https://github.com/kg4zow/mdbook-template/commit/da445f50f11558293ff050b8d79a4d897da41edb</link>
+      <title>Removed setup-gh-pages script</title>
+      <author>Joerg Jaspert</author>
+      <description>
+        <pre>Commit: da445f50f11558293ff050b8d79a4d897da41edb
+Author: Joerg Jaspert &amp;lt;joerg&amp;gt;
+Date: Sun, 6 Aug 2023 14:03:28 +0800
+
+Removed setup-gh-pages script
+
+D	setup-gh-pages</pre>
+      </description>
+    </item>
+    <item>
+      <guid>28e9489046bfffdb86382bcfcb183d3250072acb</guid>
+      <pubDate>Sun, 6 Aug 2023 14:02:42 +0800</pubDate>
+      <link>https://github.com/kg4zow/mdbook-template/commit/28e9489046bfffdb86382bcfcb183d3250072acb</link>
+      <title>Initial commit</title>
+      <author>Joerg Jaspert</author>
+      <description>
+        <pre>Commit: 28e9489046bfffdb86382bcfcb183d3250072acb
+Author: Joerg Jaspert &amp;lt;joerg&amp;gt;
+Date: Sun, 6 Aug 2023 14:02:42 +0800
+
+Initial commit
+
+A	.git2rss
+A	.gitignore
+A	LICENSE.txt
+A	Makefile
+A	README.md
+A	book.toml
+A	git2rss
+A	section-lines.css
+A	setup-gh-pages
+A	src/SUMMARY.md
+A	src/chapter_1.md
+A	src/introduction.md
+A	theme/index-template.hbs
+A	version-commit
+A	version-commit.css</pre>
+      </description>
+    </item>
+  </channel>
+</rss>

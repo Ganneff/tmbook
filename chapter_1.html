@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - tm - a tmux manager / helper</title>
+        <title>Chapter 1 - tm - a tmux manager / helper</title>
 
 
         <!-- Custom HTML head -->
@@ -91,7 +91,7 @@
 -->
 <!-- End extra link above the ToC -->
 
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html" class="active">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="commandline.html">Commandline</a></li><li class="chapter-item expanded "><div>Session files</div></li><li><ol class="section"><li class="chapter-item expanded "><div>Simple</div></li><li class="chapter-item expanded "><div>Extended</div></li></ol></li><li class="chapter-item expanded "><a href="chapter_1.html">Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="commandline.html">Commandline</a></li><li class="chapter-item expanded "><div>Session files</div></li><li><ol class="section"><li class="chapter-item expanded "><div>Simple</div></li><li class="chapter-item expanded "><div>Extended</div></li></ol></li><li class="chapter-item expanded "><a href="chapter_1.html" class="active">Chapter 1</a></li></ol>
 
 <!-- Start version-commit content below ToC -->
                 <hr/>
@@ -169,37 +169,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p>tm is a small helper/wrapper for tmux. It aims at making the creation
-and resume of sessions easier wile trying to stay out of the users
-way.</p>
-<h1 id="history"><a class="header" href="#history">History</a></h1>
-<p>tm started as a bash shell script to ease my day-to-day work with
-<a href="https://github.com/tmux/tmux">tmux</a>. While tmux itself is easy to
-work with (creating new sessions is simple) for simple tasks, it takes
-considerably more brain power to setup a session that opens
-connections to multiple hosts and sets tmux up in the way, that input
-is send to all of them at the same time.</p>
-<p>And this being a task I need a <em>lot</em> of times every day, I do not want
-to do this manually, so tm was born. Back in 2010/2011 when I started
-working on it, there wasn't any (to me) useful tool I could have
-taken instead.</p>
-<h2 id="rust"><a class="header" href="#rust">Rust</a></h2>
-<p>At some point in time I switched over from Shell to Rust, which
-brought a <strong>huge</strong> speed boost for tm. While the shell version always
-worked good enough and for most sessions one builds also fast enough,
-having a compiled binary <em>still</em> makes a difference. It is especially
-noticable on the sessions that open dozens (or even hundreds) of
-windows/panes.</p>
-<h1 id="commandline"><a class="header" href="#commandline">Commandline</a></h1>
-<p>tm offers simple ways to start new sessions using commandline, where
-it supports two styles of options - so-called <code>traditional</code> and
-<code>getopt</code> style. They are mostly identica, though some options only
-work in one and not the other way.</p>
-<h1 id="config-files"><a class="header" href="#config-files">Config files</a></h1>
-<p>tm also offers different types of config files (called session files).
-From simple list of hostnames to files that ca include others to files
-that basically contain tmux commands to execute.</p>
+                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
 
 
 <!-- Start version-commit content below every page -->
@@ -218,10 +188,10 @@ that basically contain tmux commands to execute.</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-
-                            <a rel="next" href="commandline.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="commandline.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -229,10 +199,10 @@ that basically contain tmux commands to execute.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-
-                    <a rel="next" href="commandline.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="commandline.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
+
             </nav>
 
         </div>
