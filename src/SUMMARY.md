@@ -5,6 +5,6 @@
 ---
 
 - [Commandline](commandline.md)
-- [Session files]()
-  - [Simple]()
-  - [Extended]()
+- [Session files](sessionfiles.md)
+  - [Simple](simple.md)
+  - [Extended](extended.md)
