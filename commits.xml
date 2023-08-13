@@ -4,8 +4,28 @@
     <title>tm - tmux Manager / Helper</title>
     <link>https://github.com/kg4zow/mdbook-template</link>
     <description>Documentation for tm</description>
-    <pubDate>Sun, 6 Aug 2023 15:33:26 +0800</pubDate>
-    <lastBuildDate>So, 06 Aug 2023 07:33:41 +0000</lastBuildDate>
+    <pubDate>Sun, 13 Aug 2023 16:39:16 +0800</pubDate>
+    <lastBuildDate>So, 13 Aug 2023 08:39:39 +0000</lastBuildDate>
+    <item>
+      <guid>cb7bbc688f3a22be4edfd2db9ae0fa19d4598f0a</guid>
+      <pubDate>Sun, 13 Aug 2023 16:39:16 +0800</pubDate>
+      <link>https://github.com/kg4zow/mdbook-template/commit/cb7bbc688f3a22be4edfd2db9ae0fa19d4598f0a</link>
+      <title>Extend documentation</title>
+      <author>Joerg Jaspert</author>
+      <description>
+        <pre>Commit: cb7bbc688f3a22be4edfd2db9ae0fa19d4598f0a
+Author: Joerg Jaspert &amp;lt;joerg&amp;gt;
+Date: Sun, 13 Aug 2023 16:39:16 +0800
+
+Extend documentation
+
+M	src/SUMMARY.md
+M	src/commandline.md
+A	src/extended.md
+A	src/sessionfiles.md
+A	src/simple.md</pre>
+      </description>
+    </item>
     <item>
       <guid>63ffcb6919b9c7ba0f53867781c69b55f07f906e</guid>
       <pubDate>Sun, 6 Aug 2023 15:33:26 +0800</pubDate>

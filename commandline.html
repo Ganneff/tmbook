@@ -91,18 +91,18 @@
 -->
 <!-- End extra link above the ToC -->
 
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="commandline.html" class="active">Commandline</a></li><li class="chapter-item expanded "><div>Session files</div></li><li><ol class="section"><li class="chapter-item expanded "><div>Simple</div></li><li class="chapter-item expanded "><div>Extended</div></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="commandline.html" class="active">Commandline</a></li><li class="chapter-item expanded "><a href="sessionfiles.html">Session files</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="simple.html">Simple</a></li><li class="chapter-item expanded "><a href="extended.html">Extended</a></li></ol></li></ol>
 
 <!-- Start version-commit content below ToC -->
                 <hr/>
                 <div class="part-title">Version</div>
                 <div id="commit" class='version-commit-div'>
-                    <span class='version-commit-hash'><tt>initial-6-g63ffcb6</tt></span><br/>
-                    <span class='version-commit-time'><tt>2023-08-06 07:33:26 +0000</tt></span>
+                    <span class='version-commit-hash'><tt>initial-7-gcb7bbc6</tt></span><br/>
+                    <span class='version-commit-time'><tt>2023-08-13 08:39:16 +0000</tt></span>
                 </div>
                 <div class="part-title">Generated</div>
                 <div id="generated" class='version-commit-div'>
-                    <span class='version-commit-now'><tt>2023-08-06 07:33:41 +0000</tt></span>
+                    <span class='version-commit-now'><tt>2023-08-13 08:39:39 +0000</tt></span>
                 </div>
 <!-- End version-commit content below ToC -->
 
@@ -194,25 +194,32 @@ calls and timing information for them.</p>
 </tbody></table>
 </div>
 <p>Usually a <code>-vvv</code> is really helpful to debug new session files.</p>
-<h2 id="traditional"><a class="header" href="#traditional">Traditional</a></h2>
-<p>The traditional calling style, some of it dating back to the first
-shell script version, is easiest for some options.</p>
+<h2 id="traditional-subcommand-vs-getopt-calling-style"><a class="header" href="#traditional-subcommand-vs-getopt-calling-style">Traditional (subcommand) vs getopt calling style</a></h2>
+<p>The traditional calling style (subcmmand style), some of it dating
+back to the first shell script version, is easiest for some options.
+Say, a <code>tm s host</code> is less to type than <code>tm -s host</code>, same for
+<code>ms|-ms</code>, though that may be personal preference too. A few options
+are only available using getopt style, for example the <code>-g</code> or <code>-n</code>.</p>
 <h3 id="overview"><a class="header" href="#overview">Overview</a></h3>
-<p>As of tm version 0.9 the following commands are supported using the
-<code>traditional</code> style of calling tm:</p>
-<div class="table-wrapper"><table><thead><tr><th>Command</th><th>Intended action</th></tr></thead><tbody>
-<tr><td>ls</td><td>List running sessions</td></tr>
-<tr><td>s</td><td>Open SSH session to the destination</td></tr>
-<tr><td>ms</td><td>Open multi SSH sessions to hosts, synchronizing input</td></tr>
-<tr><td>k</td><td>Kill a session</td></tr>
-<tr><td>b</td><td>Break a multi-session pane into single windows</td></tr>
-<tr><td>j</td><td>Join multiple windows into one single one with many panes</td></tr>
-<tr><td>help</td><td>Print this message or the help of the given subcommand(s)</td></tr>
+<p>As of tm version 0.9 the following commands/options are supported,
+explained in more detail below:</p>
+<div class="table-wrapper"><table><thead><tr><th>Subcommand</th><th>Getopt</th><th>Intended action</th></tr></thead><tbody>
+<tr><td>ls</td><td>-l</td><td>List running sessions</td></tr>
+<tr><td>s</td><td>-s</td><td>Open SSH session to the destination</td></tr>
+<tr><td>ms</td><td>-ms</td><td>Open multi SSH sessions to hosts, synchronizing input</td></tr>
+<tr><td>k</td><td>-k</td><td>Kill a session</td></tr>
+<tr><td>b</td><td>-b</td><td>Break a multi-session pane into single windows</td></tr>
+<tr><td>j</td><td>-j</td><td>Join multiple windows into one single one with many panes</td></tr>
+<tr><td>help</td><td>-h</td><td>Print this message or the help of the given subcommand(s)</td></tr>
+<tr><td></td><td>-v[vvv]</td><td>Verbosity, the more v, the more log output</td></tr>
+<tr><td></td><td>-n</td><td>Open second session to the target, do not attach to existing</td></tr>
+<tr><td></td><td>-g</td><td>Group session - attach to an existing session, but keep seperate window config</td></tr>
+<tr><td></td><td></td><td></td></tr>
 </tbody></table>
 </div>
-<h4 id="ls"><a class="header" href="#ls">ls</a></h4>
+<h4 id="ls---l"><a class="header" href="#ls---l">ls / -l</a></h4>
 <p>Same as <code>tmux ls</code>, simply list the existing tmux sessions.</p>
-<h4 id="s-hosts"><a class="header" href="#s-hosts">s [HOSTS]</a></h4>
+<h4 id="s---s-hosts"><a class="header" href="#s---s-hosts">s / -s [HOSTS]</a></h4>
 <p>This will open a new tmux session and create multiple windows, one per
 argument - the windows will be using ssh to connect to the given
 host(s). It's arguments can be anything that your SSH config will
@@ -220,7 +227,7 @@ accept, this can range from simple hostnames to user@host or whatever
 possible matches you may have configured in your <em>~/.ssh/config</em> file.</p>
 <p>Multiple arguments will open multiple tmux windows in the same
 session.</p>
-<h4 id="ms-hosts"><a class="header" href="#ms-hosts">ms [HOSTS]</a></h4>
+<h4 id="ms---ms-hosts"><a class="header" href="#ms---ms-hosts">ms / -ms [HOSTS]</a></h4>
 <p>This will open a new tmux session and create multiple panes in the
 first window, one per argument. The panes will be using ssh to connect
 to the given hosts. It's arguments can be anything that your SSH
@@ -234,32 +241,61 @@ same time.</p>
 if not it will tell tmux to rearrange the layout, to &quot;gain&quot; some space
 again. At the end it will select the <strong>tiled</strong> layout, so that all
 panes will roughly have the same size.</p>
-<h4 id="k-session"><a class="header" href="#k-session">k [SESSION]</a></h4>
+<h4 id="k--k-session"><a class="header" href="#k--k-session">k /-k [SESSION]</a></h4>
 <p>This basically translates to <code>tmux kill-session</code> and will kill the
 session with the given name.</p>
-<h4 id="b-session"><a class="header" href="#b-session">b [SESSION]</a></h4>
+<h4 id="b--b-session"><a class="header" href="#b--b-session">b /-b [SESSION]</a></h4>
 <p>This is used to <strong>break</strong> a session built using
 <a href="commandline.html#ms">ms</a> or a session file (or even manually) into
 seperate windows. It will take the given session name and split all
 panes in the window included into seperate tmux windows.</p>
-<h4 id="j-session"><a class="header" href="#j-session">j [SESSION]</a></h4>
+<h4 id="j---j-session"><a class="header" href="#j---j-session">j / -j [SESSION]</a></h4>
 <p>This is used to <strong>join</strong> a multi-window session to one that closely
 resembles one build using the <a href="commandline.html#ms">ms</a> command. It will
 take the given session name and join all windows to the first window,
 as such making them panes of the first window. Afterwards it will
 toggle the <strong>synchronize-pane</strong> option of that window on, so any input
 will be send to all panes.</p>
+<h4 id="-n"><a class="header" href="#-n">-n</a></h4>
+<p>This is only valid as an addition to <code>s/-s</code> / <code>ms/-ms</code> and will
+ensure, that a new session will be opened, even if the arguments
+passed would otherwise reopen an already existing session. That way
+one can have multiple, independent, sessions open to the same set of
+arguments.</p>
+<p>Example:</p>
+<pre><code class="language-bash">tm s host1 host2
+tm -n s host1 host2
+</code></pre>
+<p>This will open two sessions to host1 and host2, in two different tmux
+sessions, with the second session having a random string added to the
+session name. A <code>tm ls</code> will look similar to the following:</p>
+<pre><code>s_29814_host1_host2: 1 windows (created ...)
+s_host1_host2: 1 windows (created ...)
+</code></pre>
+<h4 id="-g"><a class="header" href="#-g">-g</a></h4>
+<p>This is only valid as an addition to <code>s/-s</code> / <code>ms/-ms</code> and will
+attach to an existing session - but with a seperate window config -
+tmux calls this a session group. Citation from tmux manpage about it:</p>
+<pre><code>[...] a session group. Sessions in the same group share the same
+set of windows - new windows are linked to all sessions in the group
+and any windows closed removed from all sessions. The current and
+previous window and any session options remain independent and any
+session in a group may be killed without affecting the others. The
+group-name argument may be:
+</code></pre>
+<p>So in effect one has the same session with the same windows and panes
+open, but one can display and use different windows at the same time.</p>
 
 
 <!-- Start version-commit content below every page -->
                         <hr/>
                         <div class="version-commit-div" style="float: right">
                             Generated
-                            <span class='version-commit-now'><tt>2023-08-06 07:33:41 +0000</tt></span>
+                            <span class='version-commit-now'><tt>2023-08-13 08:39:39 +0000</tt></span>
                         </div>
                         <div class="version-commit-div">
-                            <span class='version-commit-hash'><tt>initial-6-g63ffcb6</tt></span>
-                            <span class='version-commit-time'><tt>2023-08-06 07:33:26 +0000</tt></span>
+                            <span class='version-commit-hash'><tt>initial-7-gcb7bbc6</tt></span>
+                            <span class='version-commit-time'><tt>2023-08-13 08:39:16 +0000</tt></span>
                         </div>
 <!-- End version-commit content below every page -->
 
@@ -271,6 +307,9 @@ will be send to all panes.</p>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next" href="sessionfiles.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -282,6 +321,9 @@ will be send to all panes.</p>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next" href="sessionfiles.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
