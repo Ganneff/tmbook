@@ -97,12 +97,12 @@
                 <hr/>
                 <div class="part-title">Version</div>
                 <div id="commit" class='version-commit-div'>
-                    <span class='version-commit-hash'><tt>initial-7-gcb7bbc6</tt></span><br/>
-                    <span class='version-commit-time'><tt>2023-08-13 08:39:16 +0000</tt></span>
+                    <span class='version-commit-hash'><tt>v0.9.0</tt></span><br/>
+                    <span class='version-commit-time'><tt>2023-08-14 04:39:10 +0000</tt></span>
                 </div>
                 <div class="part-title">Generated</div>
                 <div id="generated" class='version-commit-div'>
-                    <span class='version-commit-now'><tt>2023-08-13 08:39:39 +0000</tt></span>
+                    <span class='version-commit-now'><tt>2023-08-14 04:39:44 +0000</tt></span>
                 </div>
 <!-- End version-commit content below ToC -->
 
@@ -194,17 +194,44 @@ supported. Details can be taken from the
 rust crates documentation, but in short: ~ expands to the users
 homedir, $VAR and ${VAR} expand to the content of the variable VAR,
 and non-existing variables expand to an empty string.</p>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<p>Line numbers (if any) added for clarity in the description later,
+remove them if you copy this example!</p>
+<h4 id="cluster-of-machines"><a class="header" href="#cluster-of-machines">Cluster of machines</a></h4>
+<pre><code class="language-bash">somecluster
+NONE
+host1
+user@host2
+</code></pre>
+<p>This will open a session named &quot;somecluster&quot;, connecting to host1
+using the default user (usually your username, or whatever your ssh
+config says, if any) and user@host2. It will open one window with two
+panes and synchronize input to them, so that any action happens on
+both hosts.</p>
+<h4 id="machine-list-from-external-command"><a class="header" href="#machine-list-from-external-command">Machine list from external command</a></h4>
+<pre><code class="language-bash">nfsserver_mail
+NONE
+LIST ssh -tt clustermaster &quot;sudo /usr/sbin/gnt-instance list --no-headers -o name --filter '(\&quot;nfs\&quot; in tags and \&quot;prod\&quot; in tags and \&quot;mail\&quot; in tags) and admin_state == \&quot;up\&quot;'&quot;
+</code></pre>
+<p>This needs sudo for the gnt-instance command on the cluster master, recommended NOPASSWD, and will then fetch a list of (running) hosts where the ganeti tags match nfs, prod and mail. Any other host, or hosts with those tags but marked down, will be ignored.</p>
+<h4 id="extended-machine-list-from-external-command-using-tmreplacetm"><a class="header" href="#extended-machine-list-from-external-command-using-tmreplacetm">Extended, machine list from external command using ++TMREPLACETM++</a></h4>
+<pre><code class="language-bash">nfsserver_++TMREPLACETM++
+NONE
+LIST ssh -tt clustermaster &quot;sudo /usr/sbin/gnt-instance list --no-headers -o name --filter '(\&quot;nfs\&quot; in tags and \&quot;prod\&quot; in tags and \&quot;++TMREPLACETM++\&quot; in tags) and admin_state == \&quot;up\&quot;'&quot;
+</code></pre>
+<p>This is nearly the same as the example just before, except that the mail function is replaced by a token. This token can be given as one more argument after the session file and allows flexibility in the LIST command.
+To open the same session as in the example before, that is, all mail VMs, one can run <code>tm vm_nfs mail</code> - assuming the session file is saved as <strong>vm_nfs</strong> in the <em>.tmux.d</em>.</p>
 
 
 <!-- Start version-commit content below every page -->
                         <hr/>
                         <div class="version-commit-div" style="float: right">
                             Generated
-                            <span class='version-commit-now'><tt>2023-08-13 08:39:39 +0000</tt></span>
+                            <span class='version-commit-now'><tt>2023-08-14 04:39:44 +0000</tt></span>
                         </div>
                         <div class="version-commit-div">
-                            <span class='version-commit-hash'><tt>initial-7-gcb7bbc6</tt></span>
-                            <span class='version-commit-time'><tt>2023-08-13 08:39:16 +0000</tt></span>
+                            <span class='version-commit-hash'><tt>v0.9.0</tt></span>
+                            <span class='version-commit-time'><tt>2023-08-14 04:39:10 +0000</tt></span>
                         </div>
 <!-- End version-commit content below every page -->
 
